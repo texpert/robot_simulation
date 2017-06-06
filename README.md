@@ -30,7 +30,7 @@ $ cd robot_simulation
 
 Ensure the application's execution flag is enabled:
 ```
-chmod u+x simulation.rb
+$ chmod u+x simulation.rb
 
 ```
 
