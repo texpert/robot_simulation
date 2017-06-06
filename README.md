@@ -1,6 +1,6 @@
-#Toy Robot Simulator Application
+# Toy Robot Simulator Application
 
-##Requirements
+## Requirements
 
 Ensure you have a Ruby interpreter installed. 
 
@@ -10,7 +10,7 @@ To run the application as a shell script it must have execution flag enabled.
 
 The file with the simulation commands as a command line argument.
 
-##Running the application
+## Running the application
 
 Clone the git repository into a user accessible folder:
 
@@ -24,9 +24,9 @@ Navigate to application's root folder:
 $ cd robot_simulation
 ```
 
-######See below 3 methods of starting the application:
+###### See below 3 methods of starting the application:
 
-###Run the application as a shell script
+### Run the application as a shell script
 
 Ensure the application's execution flag is enabled:
 ```
@@ -38,13 +38,13 @@ chmod u+x simulation.rb
 $ ./simulation simulation.txt
 ```
 
-###Run the application with the default Ruby interpreter
+### Run the application with the default Ruby interpreter
 
 ```
 $ ruby simulation.rb simulation.txt
 ```
 
-###Run the application explicitely with the Ruby interpreter of your choice:
+### Run the application explicitely with the Ruby interpreter of your choice:
 
 ```
 $ /home/user/.rvm/rubies/ruby-2.4.1/bin/ruby simulation.rb simulation.txt
