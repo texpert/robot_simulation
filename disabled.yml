@@ -1,0 +1,44 @@
+# These are all the cops that are disabled in the default configuration.
+
+# By default, the rails cops are not run. Override in project or home
+# directory .rubocop.yml files, or by giving the -R/--rails option.
+Bundler/OrderedGems:
+  Enabled: false
+
+Rails:
+  Enabled: false
+
+Rails/SaveBang:
+  Enabled: true
+
+Style/AutoResourceCleanup:
+  Description: 'Suggests the usage of an auto resource cleanup version of a method (if available).'
+  Enabled: true
+
+Style/CollectionMethods:
+  Description: 'Preferred collection methods.'
+  StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#map-find-select-reduce-size'
+  Enabled: true
+
+Style/Encoding:
+  Description: 'Use UTF-8 as the source file encoding.'
+  StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#utf-8'
+  Enabled: true
+
+Style/OptionHash:
+  Description: "Don't use option hashes when you can use keyword arguments."
+  Enabled: true
+
+Style/Send:
+  Description: 'Prefer `Object#__send__` or `Object#public_send` to `send`, as `send` may overlap with existing methods.'
+  StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#prefer-public-send'
+  Enabled: true
+
+Style/StringMethods:
+  Description: 'Checks if configured preferred methods are used over non-preferred.'
+  Enabled: true
+
+Style/SymbolArray:
+  Description: 'Use %i or %I for arrays of symbols.'
+  StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#percent-i'
+  Enabled: true

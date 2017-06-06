@@ -1,0 +1,25 @@
+# These are all the cops that are enabled in the default configuration.
+
+Style/PreferredHashMethods:
+  Description: 'Checks for use of deprecated Hash methods.'
+  StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#hash-key'
+  Enabled: true
+
+Style/Documentation:
+  Description: 'Document classes and non-namespace modules.'
+  Enabled: false
+  Exclude:
+    - 'spec/**/*'
+    - 'test/**/*'
+
+Style/CaseIndentation:
+  Description: 'Indentation of when in a case/when/[else/]end.'
+  StyleGuide: '#indent-when-to-case'
+  Enabled: false
+
+#################### Metrics ################################
+
+
+Lint/UnneededSplatExpansion:
+  Description: 'Checks for useless array splats.'
+  Enabled: true
