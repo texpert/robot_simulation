@@ -9,10 +9,14 @@ module Robotics
 
     private
 
+    def command_valid?(command)
+      errors.unshift 'ERROR! Command format invalid, should be an array' unless command.is_a?(Array)
+      errors.any? ? false : true
+    end
+
     def action_exist?(action)
       errors.unshift "ERROR! Action is undefined: #{action}" unless respond_to?(action, include_all: true)
-      return false if errors.any?
-      true
+      errors.any? ? false : true
     end
 
     def left_valid?(_options)
@@ -25,8 +29,7 @@ module Robotics
       return false unless placed?
       calculate_target
       Robot.validate_target(self, target.values)
-      return false if errors.any?
-      true
+      errors.any? ? false : true
     end
 
     def place_valid?(options)
