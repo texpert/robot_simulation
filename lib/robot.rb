@@ -6,7 +6,6 @@ require_relative 'validations'
 module Robotics
   STEP = 1
   DIRECTIONS = { 'NORTH' => { y: STEP }, 'EAST' => { x: STEP }, 'SOUTH' => { y: -STEP }, 'WEST' => { x: -STEP } }.freeze
-  COMPASS = DIRECTIONS.cycle.each
   POSITION_KEYS = %i[x y facing].freeze
   BOARD = { x_start: 0, y_start: 0, x_end: 5, y_end: 5 }.freeze
 
@@ -19,6 +18,7 @@ module Robotics
     def initialize
       @position = nil
       @errors = []
+      @compass = DIRECTIONS.cycle.each
     end
 
     def run(command)
@@ -41,23 +41,24 @@ module Robotics
 
     private
 
+    attr_reader :compass
     attr_writer :errors
     attr_accessor :position, :target
 
     def place(options)
       @position = Hash[POSITION_KEYS.zip(options)]
       loop do
-        break if COMPASS.next[0] == position[:facing]
+        break if compass.next[0] == position[:facing]
       end
     end
 
     def left(_options)
-      2.times { COMPASS.next }
-      position[:facing] = COMPASS.next[0]
+      2.times { compass.next }
+      position[:facing] = compass.next[0]
     end
 
     def right(_options)
-      position[:facing] = COMPASS.next[0]
+      position[:facing] = compass.next[0]
     end
 
     def move(_options)
