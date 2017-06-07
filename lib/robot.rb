@@ -31,10 +31,6 @@ module Robotics
       __send__(action, options)
     end
 
-    def onboard?(x, y)
-      x.between?(BOARD[:x_start], BOARD[:x_end]) && y.between?(BOARD[:y_start], BOARD[:y_end])
-    end
-
     private
 
     attr_reader :compass

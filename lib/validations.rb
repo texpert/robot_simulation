@@ -51,7 +51,11 @@ module Robotics
       end
 
       def validate_target(instance, options)
-        instance.errors.unshift "ERROR! Command invalid, position out of border: #{options}" unless instance.onboard?(options[0], options[1])
+        instance.errors.unshift "ERROR! Command invalid, position out of border: #{options}" unless onboard?(options[0], options[1])
+      end
+
+      def onboard?(x, y)
+        x.between?(BOARD[:x_start], BOARD[:x_end]) && y.between?(BOARD[:y_start], BOARD[:y_end])
       end
     end
   end
