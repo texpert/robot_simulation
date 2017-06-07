@@ -34,3 +34,6 @@ public/system/*
 # Ignore encrypted secrets key file.
 config/secrets.yml.key
 sftp-config.json
+
+# Ignore some Rspec files
+/spec/examples.txt
