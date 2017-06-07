@@ -42,7 +42,7 @@ module Robotics
 
     module ClassMethods
       def validate_facing(instance, options)
-        instance.errors.unshift 'ERROR! Options missing after PLACE command' unless DIRECTIONS.keys.include?(options[2])
+        instance.errors.unshift 'ERROR! 3rd option should be a cardinal direction' unless DIRECTIONS.keys.include?(options[2])
       end
 
       def validate_presence(instance, options)
