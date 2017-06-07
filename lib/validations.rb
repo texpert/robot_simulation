@@ -7,6 +7,8 @@ module Robotics
       base.extend(ClassMethods)
     end
 
+    private
+
     def action_exist?(action)
       errors.unshift "ERROR! Action is undefined: #{action}" unless respond_to?(action, include_all: true)
       return false if errors.any?

@@ -31,10 +31,6 @@ module Robotics
       __send__(action, options)
     end
 
-    def reset_errors
-      @errors = []
-    end
-
     def onboard?(x, y)
       x.between?(BOARD[:x_start], BOARD[:x_end]) && y.between?(BOARD[:y_start], BOARD[:y_end])
     end
@@ -44,6 +40,10 @@ module Robotics
     attr_reader :compass
     attr_writer :errors
     attr_accessor :position, :target
+
+    def reset_errors
+      @errors = []
+    end
 
     def place(options)
       @position = Hash[POSITION_KEYS.zip(options)]
