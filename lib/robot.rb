@@ -65,12 +65,12 @@ module Robotics
 
     def report(_options)
       puts position
+      position
     end
 
     def placed?
       errors.unshift 'ERROR! Command ignored, the robot is not placed on the board' if position.nil?
-      return false if errors.any?
-      true
+      errors.any? ? false : true
     end
 
     def calculate_target
