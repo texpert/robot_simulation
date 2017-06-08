@@ -2,15 +2,41 @@
 
 ## Requirements
 
-Ensure you have a Ruby interpreter installed. 
+Ensure you have a Ruby interpreter installed. (Developed and tested with Ruby version 2.3.4)
 
-Developed and tested with Ruby version 2.3.4
+Rubygems and bundle gem installed.
 
 To run the application as a shell script it must have execution flag enabled.
 
 The file with the simulation commands as a command line argument.
 
-## Running the application
+## Installing the application
+
+Check to see whether RubyGems is installed:
+
+```
+$ gem --version
+2.6.10
+```
+
+If it is not installed, follow the instructions on [Rubygems download page](https://rubygems.org/pages/download/).
+
+Then, check if bundler gem is installed:
+
+```
+$ gem list bundler
+
+*** LOCAL GEMS ***
+
+bundler (1.15.1, 1.14.6, 1.14.5, 1.14.3, 1.13.7)
+
+```
+
+Install bundler, if it is missing:
+
+```
+$ gem install bundler
+```
 
 Clone the git repository into a user accessible folder:
 
@@ -23,6 +49,14 @@ Navigate to application's root folder:
 ```
 $ cd robot_simulation
 ```
+
+Install application's bundle:
+
+```
+$ bundle install
+```
+
+## Running the application
 
 ###### See below 3 methods of starting the application:
 
@@ -48,4 +82,12 @@ $ ruby simulation.rb simulation.txt
 
 ```
 $ /home/user/.rvm/rubies/ruby-2.4.1/bin/ruby simulation.rb simulation.txt
+```
+
+## Running the specs
+
+To run all the specs, run in the root application folder:
+
+```
+$ rspec
 ```

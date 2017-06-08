@@ -37,3 +37,4 @@ sftp-config.json
 
 # Ignore some Rspec files
 /spec/examples.txt
+/coverage
