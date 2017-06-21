@@ -25,10 +25,11 @@ GEM
 
 PLATFORMS
   ruby
+  x64-mingw32
 
 DEPENDENCIES
   rspec
   simplecov
 
 BUNDLED WITH
-   1.14.6
+   1.15.1

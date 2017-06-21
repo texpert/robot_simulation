@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require_relative 'actions'
 require_relative 'validations'
 
 # Robotics namespace
@@ -11,6 +12,7 @@ module Robotics
 
   # Toy Robot Simulator
   class Robot
+    include Robotics::Actions
     include Robotics::Validations
 
     attr_reader :errors
@@ -40,32 +42,6 @@ module Robotics
 
     def reset_errors
       @errors = []
-    end
-
-    def place(options)
-      @position = Hash[POSITION_KEYS.zip(options)]
-      loop do
-        break if compass.next[0] == position[:facing]
-      end
-    end
-
-    def left(_options)
-      2.times { compass.next }
-      position[:facing] = compass.next[0]
-    end
-
-    def right(_options)
-      position[:facing] = compass.next[0]
-    end
-
-    def move(_options)
-      position[:x] = target[:x]
-      position[:y] = target[:y]
-    end
-
-    def report(_options)
-      puts position
-      position
     end
 
     def placed?

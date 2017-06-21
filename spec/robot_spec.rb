@@ -65,6 +65,11 @@ RSpec.describe Robotics::Robot do
       expect(subject.run(['UP'])).to eql(['ERROR! Action is undefined: up'])
     end
 
+    it 'returns error if the command is not a private method of Robotics::Actions, even if defined on the object' do
+      expect(subject.respond_to?(:run)).to be_truthy
+      expect(subject.run(['RUN'])).to eql(['ERROR! Action is undefined: run'])
+    end
+
     it 'returns error for all the commands except PLACE if the robot is not placed on board' do
       %w[LEFT RIGHT MOVE REPORT].each do |command|
         expect(subject.run([command])).to eql(['ERROR! Command ignored, the robot is not placed on the board'])

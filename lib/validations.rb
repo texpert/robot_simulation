@@ -15,7 +15,7 @@ module Robotics
     end
 
     def action_exist?(action)
-      errors.unshift "ERROR! Action is undefined: #{action}" unless respond_to?(action, include_all: true)
+      errors.unshift "ERROR! Action is undefined: #{action}" unless Robotics::Actions.private_method_defined?(action)
       errors.any? ? false : true
     end
 
