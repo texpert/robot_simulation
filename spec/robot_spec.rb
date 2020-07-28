@@ -6,37 +6,40 @@ RSpec.describe Robotics::Robot do
   let(:in_range_x) { rand(Robotics::BOARD[:x_end]) }
   let(:in_range_y) { rand(Robotics::BOARD[:y_end]) }
   let(:direction)  { Robotics::DIRECTIONS.keys.sample }
+  let(:step) { Robotics::STEP }
 
   describe '#initialize' do
     describe 'instance variables' do
-      it 'initializes the `errors` instance variable' do
+      it '`errors` instance variable' do
         expect(subject.instance_variable_get('@errors')).to be_truthy
       end
 
-      it 'initializes the `errors` as an array' do
+      it '`errors` as an array' do
         expect(subject.errors.is_a?(Array)).to be_truthy
       end
 
-      it 'initializes the `errors` array in empty state and with a public getter method' do
+      it '`errors` array in empty state and with a public getter method' do
         expect(subject.errors).to be_empty
       end
 
-      it 'initializes the `position` instance variable with nil' do
+      it '`position` instance variable with nil' do
         expect(subject.instance_variable_get('@position')).to be_falsey
       end
 
-      it 'initializes the `compass` instance variable' do
+      it '`compass` instance variable' do
         expect(subject.instance_variable_get('@compass')).to be_truthy
       end
 
-      it 'initializes the `compass` as a enumerator' do
+      it '`compass` as a enumerator' do
         expect(subject.instance_variable_get('@compass').is_a?(Enumerator)).to be_truthy
       end
 
-      it 'initializes the `compass` as a cycle enumerator of cardinal directions with defined changes of coordinates for each direction' do
-        expect(subject.instance_variable_get('@compass').inspect)
-          .to eql("#<Enumerator: {\"NORTH\"=>{:y=>#{Robotics::STEP}}, \"EAST\"=>{:x=>#{Robotics::STEP}}, \"SOUTH\"=>{:y=>-#{Robotics::STEP}}, \"WEST\"=>{:x=\
->-#{Robotics::STEP}}}:cycle>")
+      it '`compass` as a cycle enumerator of cardinal directions with defined coordinates changes for each direction' do
+        compass_ivar = subject.instance_variable_get('@compass')
+        expect(compass_ivar).to be_instance_of(Enumerator)
+        expect(compass_ivar.inspect)
+          .to eql("#<Enumerator: {\"NORTH\"=>{:y=>#{step}}, \"EAST\"=>{:x=>#{step}}, \"SOUTH\"=>{:y=>-#{step}}," \
+                  " \"WEST\"=>{:x=\>-#{step}}}:cycle>")
       end
     end
 
@@ -112,9 +115,12 @@ RSpec.describe Robotics::Robot do
         end
 
         it 'returns error if at least one target coordinate is out of the board' do
-          expect(subject.run(['PLACE', 0, 6, 'NORTH'])).to eql(['ERROR! Command invalid, position out of border: [0, 6, "NORTH"]'])
-          expect(subject.run(['PLACE', 6, 0, 'NORTH'])).to eql(['ERROR! Command invalid, position out of border: [6, 0, "NORTH"]'])
-          expect(subject.run(['PLACE', 6, 6, 'NORTH'])).to eql(['ERROR! Command invalid, position out of border: [6, 6, "NORTH"]'])
+          expect(subject.run(['PLACE', 0, 6, 'NORTH']))
+            .to eql(['ERROR! Command invalid, position out of border: [0, 6, "NORTH"]'])
+          expect(subject.run(['PLACE', 6, 0, 'NORTH']))
+            .to eql(['ERROR! Command invalid, position out of border: [6, 0, "NORTH"]'])
+          expect(subject.run(['PLACE', 6, 6, 'NORTH']))
+            .to eql(['ERROR! Command invalid, position out of border: [6, 6, "NORTH"]'])
         end
 
         it 'returns error if the 3rd option is not a cardinal direction' do

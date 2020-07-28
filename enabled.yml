@@ -19,6 +19,6 @@ Layout/CaseIndentation:
 
 #################### Metrics ################################
 
-Lint/UnneededSplatExpansion:
+Lint/RedundantSplatExpansion:
   Description: 'Checks for useless array splats.'
   Enabled: true

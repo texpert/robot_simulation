@@ -26,11 +26,13 @@ module Robotics
     def run(command)
       reset_errors
       return errors unless command_valid?(command)
+
       action = command[0].downcase.to_sym
       options = command.drop(1)
 
       return errors unless action_exist?(action)
       return errors unless __send__("#{action}_valid?", options)
+
       __send__(action, options)
     end
 

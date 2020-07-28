@@ -1,8 +1,8 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
-$LOAD_PATH.unshift File.expand_path('../lib/', __FILE__)
-Dir['./lib/*'].each { |file| require file }
+$LOAD_PATH.unshift File.expand_path('lib', __dir__)
+Dir['./lib/*'].sort.each { |file| require file }
 
 require 'scanf'
 
@@ -14,6 +14,7 @@ module Robotics
       line = input.readline.chomp
       command = line.scanf('%s%d,%d,%s')
       next if command.empty?
+
       puts "Executing command: #{line}"
       result = robot.run(command)
       puts "Result: #{result}" if robot.errors.any?

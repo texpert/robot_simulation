@@ -27,6 +27,7 @@ module Robotics
 
     def move_valid?(_options)
       return false unless placed?
+
       calculate_target
       Robot.validate_target(self, target.values)
       errors.empty?
@@ -42,7 +43,9 @@ module Robotics
 
     module ClassMethods
       def validate_facing(instance, options)
-        instance.errors.unshift 'ERROR! 3rd option should be a cardinal direction' unless DIRECTIONS.keys.include?(options[2])
+        return if DIRECTIONS.keys.include?(options[2])
+
+        instance.errors.unshift 'ERROR! 3rd option should be a cardinal direction'
       end
 
       def validate_presence(instance, options)
@@ -54,7 +57,9 @@ module Robotics
       end
 
       def validate_target(instance, options)
-        instance.errors.unshift "ERROR! Command invalid, position out of border: #{options}" unless onboard?(options[0], options[1])
+        return if onboard?(options[0], options[1])
+
+        instance.errors.unshift "ERROR! Command invalid, position out of border: #{options}"
       end
 
       def onboard?(x, y)

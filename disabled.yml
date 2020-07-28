@@ -5,11 +5,8 @@
 Bundler/OrderedGems:
   Enabled: false
 
-Rails:
+Naming/MethodParameterName:
   Enabled: false
-
-Rails/SaveBang:
-  Enabled: true
 
 Style/AutoResourceCleanup:
   Description: 'Suggests the usage of an auto resource cleanup version of a method (if available).'
