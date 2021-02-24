@@ -2,7 +2,7 @@
 
 ## Requirements
 
-Ensure you have a Ruby interpreter installed. (Developed and tested with Ruby versions 2.3.4 and 2.4.9)
+Ensure you have a Ruby interpreter installed. (Currently tested with Ruby version 2.6.6)
 
 Rubygems and bundle gem installed.
 
