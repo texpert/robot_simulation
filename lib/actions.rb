@@ -6,7 +6,7 @@ module Robotics
     private
 
     def place(options)
-      @position = Hash[POSITION_KEYS.zip(options)]
+      @position = POSITION_KEYS.zip(options).to_h
       loop do
         break if compass.next[0] == position[:facing]
       end

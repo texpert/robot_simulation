@@ -48,7 +48,7 @@ module Robotics
 
     def placed?
       errors.unshift 'ERROR! Command ignored, the robot is not placed on the board' if position.nil?
-      errors.any? ? false : true
+      errors.none?
     end
 
     def calculate_target
