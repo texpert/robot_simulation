@@ -18,10 +18,11 @@ AllCops:
   # behavior by overriding ExtraDetails, or by giving the
   # -E/--extra-details option.
   ExtraDetails: true
+  NewCops: enable
   # Additional cops that do not reference a style guide rule may be enabled by
   # default. Change behavior by overriding StyleGuideCopsOnly, or by giving
   # the --only-guide-cops option.
-  TargetRubyVersion: 2.4
+  TargetRubyVersion: 2.6
 
 Style/Semicolon:
   # Allow ; to separate several expressions on the same line.
@@ -57,7 +58,7 @@ Metrics/MethodLength:
   Max: 25
 
 Metrics/PerceivedComplexity:
-  Max: 8
+  Max: 10
 
 Metrics/BlockLength:
   CountComments: false
