@@ -2,7 +2,7 @@
 
 ## Requirements
 
-Ensure you have a Ruby interpreter installed. (Currently tested with Ruby version 2.6.6)
+Ensure you have a Ruby interpreter installed. (Currently tested with Ruby version 2.7.2)
 
 Rubygems and bundle gem installed.
 
@@ -16,7 +16,7 @@ Check to see whether RubyGems is installed:
 
 ```
 $ gem --version
-2.6.10
+3.1.4
 ```
 
 If it is not installed, follow the instructions on [Rubygems download page](https://rubygems.org/pages/download/).
@@ -28,7 +28,7 @@ $ gem list bundler
 
 *** LOCAL GEMS ***
 
-bundler (1.15.1, 1.14.6, 1.14.5, 1.14.3, 1.13.7)
+bundler (2.2.19, 2.2.16, default: 2.1.4, 1.17.3)
 
 ```
 
